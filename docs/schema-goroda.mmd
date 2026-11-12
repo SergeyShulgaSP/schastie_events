@@ -1,0 +1,166 @@
+erDiagram
+    CITY ||--o{ CITY_DIRECTION : "свои посадочные"
+    DIRECTION ||--o{ CITY_DIRECTION : ""
+    DIRECTION ||--o{ DIRECTION : "поднаправления"
+    CITY ||--o{ SERVICE : "услуги города"
+    CITY_DIRECTION ||--o{ SERVICE : "основное направление"
+    SERVICE }o--o{ CITY_DIRECTION : "доп. направления"
+    SERVICE_FAMILY ||--o{ SERVICE : "аналоги в городах"
+    SERVICE ||--o{ PACKAGE : "пакеты"
+    PACKAGE ||--o{ PACKAGE_ITEM : "что входит"
+    CITY ||--o{ VENUE : "площадки"
+    VENUE }o--o{ SERVICE : "где проходит"
+    CITY ||--o{ ARTICLE : "блог города"
+    ARTICLE }o--o{ SERVICE : "ссылки на услуги"
+    CITY ||--o{ PAGE : "страницы"
+    CITY ||--o{ LEAD : "заявки"
+    SERVICE ||--o{ LEAD : ""
+    PACKAGE ||--o{ LEAD : ""
+    LEAD ||--o{ LEAD_EVENT : "история"
+    USER }o--o{ CITY : "доступ к городам"
+    USER ||--o{ LEAD : "менеджер"
+    CITY ||--o{ REVIEW : ""
+    SERVICE ||--o{ REVIEW : ""
+    CITY ||--o{ REDIRECT : ""
+    MEDIA ||--o{ MEDIA_LINK : ""
+
+    CITY {
+        int id
+        string slug "spb, msk, sochi"
+        string domain
+        string name "Санкт-Петербург"
+        string name_gen "Санкт-Петербурга"
+        string name_prep "в Санкт-Петербурге"
+        string short "СПб"
+        string phone
+        string whatsapp
+        string telegram
+        string address
+        float lat
+        float lng
+        string yandex_org_id
+        string metrika_id
+        string ga_id
+        json seo_templates
+        bool is_active
+    }
+    DIRECTION {
+        int id
+        int parent_id
+        string code "surprises, dates, weddings"
+        string name "Сюрпризы"
+        int sort
+    }
+    CITY_DIRECTION {
+        int id
+        int city_id
+        int direction_id
+        string path "/uslugi-i-tseny/syurprizy/"
+        string h1
+        text intro
+        text body
+        json faq
+        bool is_active
+    }
+    SERVICE_FAMILY {
+        int id
+        string name "Мишка Тедди"
+        int direction_id
+    }
+    SERVICE {
+        int id
+        int city_id
+        int city_direction_id
+        int family_id
+        string slug
+        string path "unique within city"
+        string title
+        string h1
+        text lead
+        text body
+        string duration
+        int price_from
+        int guests_max
+        bool is_active
+        bool is_text_unique
+        int wp_id
+    }
+    PACKAGE {
+        int id
+        int service_id
+        string name
+        int price
+        int old_price
+        string duration
+        bool is_featured
+        int sort
+    }
+    PACKAGE_ITEM {
+        int id
+        int package_id
+        string text
+        int sort
+    }
+    VENUE {
+        int id
+        int city_id
+        string slug
+        string name "Крыша дома Зингер"
+        string address
+        float lat
+        float lng
+        text body
+    }
+    ARTICLE {
+        int id
+        int city_id "null = общая"
+        string path
+        string title
+        text body
+        datetime published_at
+    }
+    PAGE {
+        int id
+        int city_id
+        string path
+        string title
+        json blocks
+    }
+    LEAD {
+        int id
+        int city_id
+        int service_id
+        int package_id
+        string name
+        string phone
+        string email
+        date event_date
+        text message
+        string status
+        string source_url
+        json utm
+        int manager_id
+    }
+    LEAD_EVENT {
+        int id
+        int lead_id
+        int user_id
+        string type "note, status, call"
+        text text
+    }
+    SEO_META {
+        string model_type
+        int model_id
+        string title
+        string description
+        string canonical
+        bool noindex
+    }
+    REDIRECT {
+        int id
+        int city_id
+        string from_path
+        string to_path
+        int code
+        int hits
+    }
