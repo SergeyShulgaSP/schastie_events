@@ -1,0 +1,164 @@
+erDiagram
+    CITY ||--o{ SERVICE_CITY : "доступна в"
+    SERVICE ||--o{ SERVICE_CITY : ""
+    CATEGORY ||--o{ CATEGORY : "подрубрики"
+    CATEGORY ||--o{ SERVICE : "основная рубрика"
+    SERVICE }o--o{ CATEGORY : "доп. рубрики"
+    SERVICE ||--o{ PACKAGE : "пакеты"
+    PACKAGE ||--o{ PACKAGE_ITEM : "что входит"
+    CITY ||--o{ PACKAGE : "цена для города"
+    SERVICE ||--o{ MEDIA_LINK : "фото/видео"
+    ARTICLE ||--o{ MEDIA_LINK : ""
+    PAGE ||--o{ MEDIA_LINK : ""
+    MEDIA ||--o{ MEDIA_LINK : ""
+    ARTICLE }o--o{ SERVICE : "рекомендуемые услуги"
+    REVIEW }o--|| SERVICE : "отзыв к услуге"
+    LEAD }o--o| SERVICE : "со страницы"
+    LEAD }o--o| PACKAGE : "выбранный пакет"
+    LEAD }o--|| CITY : ""
+    LEAD ||--o{ LEAD_NOTE : "история"
+    USER ||--o{ LEAD : "ответственный"
+    SEO_META }o--|| SERVICE : "полиморфно"
+    REDIRECT }o--o| SERVICE : ""
+
+    CITY {
+        int id
+        string slug
+        string name
+        string domain
+        string phone
+        string address
+        bool is_default
+    }
+    CATEGORY {
+        int id
+        int parent_id
+        string slug
+        string path
+        string name
+        string intro
+        string body
+        int sort
+        bool is_active
+    }
+    SERVICE {
+        int id
+        int category_id
+        string slug
+        string path
+        string title
+        string h1
+        string lead
+        string body
+        string duration
+        int price_from
+        bool is_active
+        int sort
+        int wp_id
+    }
+    SERVICE_CITY {
+        int service_id
+        int city_id
+        bool is_active
+    }
+    PACKAGE {
+        int id
+        int service_id
+        int city_id
+        string name
+        int price
+        int old_price
+        string duration
+        bool is_featured
+        int sort
+    }
+    PACKAGE_ITEM {
+        int id
+        int package_id
+        string text
+        int sort
+    }
+    ARTICLE {
+        int id
+        string slug
+        string path
+        string title
+        string lead
+        string body
+        datetime published_at
+        int author_id
+        int wp_id
+    }
+    PAGE {
+        int id
+        int parent_id
+        string slug
+        string path
+        string title
+        string blocks_json
+        string template
+        int wp_id
+    }
+    MEDIA {
+        int id
+        string disk
+        string path
+        string alt
+        int width
+        int height
+        int wp_id
+        string original_url
+    }
+    REVIEW {
+        int id
+        int service_id
+        string author
+        string text
+        int rating
+        int photo_id
+        bool is_published
+    }
+    LEAD {
+        int id
+        int city_id
+        int service_id
+        int package_id
+        string name
+        string phone
+        string email
+        datetime event_date
+        string message
+        string status
+        string source_url
+        string utm
+        int manager_id
+    }
+    LEAD_NOTE {
+        int id
+        int lead_id
+        int user_id
+        string text
+        datetime created_at
+    }
+    SEO_META {
+        string model_type
+        int model_id
+        string title
+        string description
+        int og_image_id
+        string canonical
+        bool noindex
+    }
+    REDIRECT {
+        int id
+        string from_path
+        string to_path
+        int code
+        int hits
+    }
+    USER {
+        int id
+        string name
+        string email
+        string role
+    }
