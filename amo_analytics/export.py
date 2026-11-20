@@ -164,6 +164,17 @@ def main():
             t.get("created_at"), t.get("complete_till")))
     db.commit()
 
+    print("История статусов сделок…")
+    db.execute("""CREATE TABLE IF NOT EXISTS status_events(id TEXT PRIMARY KEY, lead_id INTEGER, created_by INTEGER,
+        created_at INTEGER, from_status INTEGER, to_status INTEGER, from_pipeline INTEGER, to_pipeline INTEGER)""")
+    sp = {"filter[type][0]": "lead_status_changed", "filter[type][1]": "lead_added"}
+    for e in amo.paginate("/events", "events", sp):
+        vb = e.get("value_before") or [{}]; va = e.get("value_after") or [{}]
+        b = (vb[0] or {}).get("lead_status", {}); af = (va[0] or {}).get("lead_status", {})
+        db.execute("REPLACE INTO status_events VALUES(?,?,?,?,?,?,?,?)", (e["id"], e["entity_id"], e.get("created_by"),
+                   e["created_at"], b.get("id"), af.get("id"), b.get("pipeline_id"), af.get("pipeline_id")))
+    db.commit()
+
     print("События чатов (метаданные сообщений)…")
     ep = {"filter[type][0]": "incoming_chat_message", "filter[type][1]": "outgoing_chat_message"}
     if a.since:

@@ -14,5 +14,3 @@ python3 amo_analytics/reasons.py         # реальные причины от�
 python3 amo_analytics/report_data.py     # наборы данных для дашборда → data/report/
 ```
 
-История статусов (`status_events`) догружается отдельно запросом `/api/v4/events`
-с типами `lead_status_changed` и `lead_added`.
