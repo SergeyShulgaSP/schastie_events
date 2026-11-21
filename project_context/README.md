@@ -45,6 +45,7 @@ amo_analytics/            — скрипты выгрузки и анализа 
   chat_analysis.py        — анализ переписки ChatApp
   tg_download.py, tg_parse.py, tg_analysis.py — экспорт Telegram: скачивание, разбор, анализ
   deep_analysis.py        — углублённый анализ: сезонность, скорость, источники, география, портрет и др.
+  amo_setup.py            — настройка amoCRM: этапы, воронки, причины отказа, поля, разовые задачи (с --apply)
   goals_tracker.py        — трекер целей на квартал → reports/k-truck-goals-q1-2027.xlsx
   deals_history.py        — ручная таблица учёта сделок: склейка дублей, метрики
   knowledge_base.py       — база вопросов и разбор ответов → SQLite и xlsx
@@ -72,6 +73,7 @@ data/                     — сырые данные и SQLite (только л
 | Google Док «Углублённый анализ K-truck: 10 направлений» | https://docs.google.com/document/d/1A3glnH9Da_DaQUjIlXL1_NmcpCIqadAdnBzFJ7ODCVg/edit |
 | Google Док «Цели K-truck на I квартал 2027» | https://docs.google.com/document/d/1-gWyJ_O7FyZaAEM35f2gGXkcY6mSopXxkzAhJSWZJyQ/edit |
 | Google Таблица «Трекер целей K-truck — I квартал 2027» | https://docs.google.com/spreadsheets/d/1yaQg0kUqM_Bu-BrZx5jbPRyS5vY8YR0IQ2PgjSpYC9Y/edit |
+| Google Док «Настройка amoCRM K-truck: воронки и задачи» | https://docs.google.com/document/d/1ZMxSqCq7Uvv777QbF9K6DnlCAKAPrazmFF5HP-PRhqY/edit |
 | Путеводитель для ИИ-консультанта | `reports/k-truck-ai-guide.md`, `reports/k-truck-ai-qa.jsonl` |
 
 ## Как пересобрать всё с нуля
