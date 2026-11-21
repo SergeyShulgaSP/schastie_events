@@ -33,6 +33,7 @@ CHATAPP_TOKEN=<токен> python3 amo_analytics/chatapp_export.py              
 python3 amo_analytics/chat_analysis.py                                           # метрики ChatApp
 python3 amo_analytics/tg_download.py <id папки Google Диска>                      # экспорт Telegram (HTML)
 python3 amo_analytics/tg_parse.py && python3 amo_analytics/tg_analysis.py        # Telegram: разбор и метрики
+python3 amo_analytics/deals_history.py                                           # ручная таблица сделок → hist_deals (xlsx в data/deals_history/)
 python3 amo_analytics/knowledge_base.py                                          # база вопросов → SQLite + xlsx
 python3 amo_analytics/report_data.py && python3 amo_analytics/html_report.py     # наборы данных и HTML-отчёт
 python3 amo_analytics/ai_guide.py                                                # путеводитель ИИ и JSONL
@@ -62,3 +63,5 @@ python3 amo_analytics/ai_guide.py                                               
 - Анализ соцсетей (Telegram-канал, YouTube, Авито, ВКонтакте) — ждём ссылки и формат от пользователя.
 - Ежемесячная выгрузка переписки ChatApp — можно поставить расписание.
 - Рабочие чаты сотрудников — пользователь интересовался, данных пока нет.
+- Уточнить у пользователя, что за суммы на «Лист1» таблицы учёта сделок (2024).
+- Выводы и цели по итогам наполнения базы — следующий шаг по просьбе пользователя.

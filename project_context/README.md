@@ -22,6 +22,7 @@
 | Записи звонков Telphin | 108 звонков (выборка), расшифровки Whisper | ссылки из заметок amoCRM | таблица `transcripts` |
 | ChatApp (WhatsApp, Telegram, MAX) | 413 чатов, 8 тыс. сообщений (март–ноябрь 2026) | API ChatApp, токен на 24 ч | таблицы `ca_chats`, `ca_messages` |
 | Экспорт Telegram (рабочий аккаунт) | 962 диалога с клиентами, 1 280 комментариев канала (2024–2026) | HTML-экспорт с Google Диска | таблица `tg_messages` |
+| Ручная таблица учёта сделок (Google Таблица) | 437 строк → 185 сделок (окт. 2024 — нояб. 2026) | выгрузка xlsx по ссылке | таблица `hist_deals` |
 
 Папка `data/` в git **не попадает**: там персональные данные клиентов.
 
@@ -43,6 +44,7 @@ amo_analytics/            — скрипты выгрузки и анализа 
   chatapp_export.py       — выгрузка переписки ChatApp
   chat_analysis.py        — анализ переписки ChatApp
   tg_download.py, tg_parse.py, tg_analysis.py — экспорт Telegram: скачивание, разбор, анализ
+  deals_history.py        — ручная таблица учёта сделок: склейка дублей, метрики
   knowledge_base.py       — база вопросов и разбор ответов → SQLite и xlsx
   report_data.py          — наборы данных для интерактивного отчёта
   html_report.py          — автономная HTML-страница отчёта
