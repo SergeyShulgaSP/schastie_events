@@ -47,6 +47,11 @@ def tokens(s):
     return [t for t in re.findall(r"[А-Яа-яЁёA-Za-z]+", s or "")]
 
 
+def money(v):
+    """Только числовые ячейки до 1 млн ₽ (отсекает номера инвойсов и текст)."""
+    return float(v) if isinstance(v, (int, float)) and 0 < v < 1_000_000 else None
+
+
 def surname(client):
     s = client or ""
     outside = re.sub(r"\(.*?\)", " ", s); inside = " ".join(re.findall(r"\((.*?)\)", s))
@@ -78,11 +83,11 @@ def main():
         for r in rows(n)[1:]:
             for t in tokens(str(r[ci] or "")): CITIES.add(t.lower())
     out = []
-    def add(sheet, contract, d, client, mgr, city, cargo, status, pays, total, dest=None, weight=None, commission=None):
+    def add(sheet, contract, d, client, mgr, city, cargo, status, pays, total, dest=None, weight=None, profit=None, bonus=None):
         if not client or not str(client).strip(): return
         out.append(dict(sheet=sheet, contract=str(contract or "").strip(), date=d, client=str(client).strip(), manager=(mgr or "").strip() if isinstance(mgr, str) else None,
                         city=str(city or "").strip(), cargo=str(cargo or "").strip(), status=str(status or "").strip(), pays=[p for p in pays if p], total=total,
-                        dest=dest or [], weight=weight, commission=commission))
+                        dest=dest or [], weight=weight, profit=profit, bonus=bonus))
     for r in rows("НОВАЯ ТАБЛИЦА УЧЕТА")[1:]:
         r = list(r) + [None] * 20
         add("НОВАЯ", r[0], date(r[1]), r[2], r[3], r[4], r[5], r[13], [num(r[6])], num(r[7]), [r[8]] if isinstance(r[8], str) else [])
@@ -92,7 +97,7 @@ def main():
             [x for x in (r[8], r[11], r[14]) if isinstance(x, str)])
     for r in rows("Лист1")[1:]:
         r = list(r) + [None] * 20
-        add("ЛИСТ1-2024", r[2], date(r[1], r[2]), r[3], r[4], r[10], r[11], r[12], [num(r[5]), num(r[6]), num(r[7])], None, None, num(r[13]), num(r[15]) or num(r[14]))
+        add("ЛИСТ1-2024", r[2], date(r[1], r[2]), r[3], r[4], r[10], r[11], r[12], [num(r[5]), num(r[6]), num(r[7])], None, None, num(r[13]), money(r[15]), money(r[14]))  # r15 — доход (выручка минус расходы), r14 — обычно 10% от дохода
     for r in rows(".....")[2:]:
         r = list(r) + [None] * 20
         if isinstance(r[1], dt.datetime):  # строка в формате «НОВАЯ», сдвинутая на колонку
@@ -130,14 +135,14 @@ def main():
                           sheets=sorted(by_sheet), rows=len(g), date=min(dates).isoformat() if dates else None,
                           manager=next((o["manager"] for o in g if o["manager"]), None), city=max((o["city"] for o in g), key=len),
                           cargo=cargo, kind="Техника" if TECH.search(cargo) else ("Не указан" if not cargo else "Навесное / запчасти / прочее"),
-                          models=models, status=grp, amount=amount, commission=max([o["commission"] or 0 for o in g]) or None,
+                          models=models, status=grp, amount=amount, profit=max([o["profit"] or 0 for o in g]) or None, bonus=max([o["bonus"] or 0 for o in g]) or None,
                           weight=max([o["weight"] or 0 for o in g]) or None, dest=dict(dest)))
     db = sqlite3.connect(os.path.join(ROOT, "data", "amo.sqlite"), timeout=120)
     db.execute("DROP TABLE IF EXISTS hist_deals")
-    db.execute("CREATE TABLE hist_deals(key TEXT, client TEXT, sheets TEXT, rows INT, date TEXT, manager TEXT, city TEXT, cargo TEXT, kind TEXT, models TEXT, status TEXT, amount REAL, commission REAL, weight REAL, dest TEXT)")
-    db.executemany("INSERT INTO hist_deals VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+    db.execute("CREATE TABLE hist_deals(key TEXT, client TEXT, sheets TEXT, rows INT, date TEXT, manager TEXT, city TEXT, cargo TEXT, kind TEXT, models TEXT, status TEXT, amount REAL, profit REAL, bonus REAL, weight REAL, dest TEXT)")
+    db.executemany("INSERT INTO hist_deals VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                    [(d["key"], d["client"], json.dumps(d["sheets"], ensure_ascii=False), d["rows"], d["date"], d["manager"], d["city"], d["cargo"], d["kind"],
-                     json.dumps(d["models"], ensure_ascii=False), d["status"], d["amount"], d["commission"], d["weight"], json.dumps(d["dest"], ensure_ascii=False)) for d in deals])
+                     json.dumps(d["models"], ensure_ascii=False), d["status"], d["amount"], d["profit"], d["bonus"], d["weight"], json.dumps(d["dest"], ensure_ascii=False)) for d in deals])
     db.commit()
     print("строк:", len(out), "сделок после склейки:", len(deals))
     return out, deals
