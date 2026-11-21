@@ -65,6 +65,7 @@ data/                     — сырые данные и SQLite (только л
 
 | Результат | Где |
 |---|---|
+| **Google Док «Итоговый анализ K-truck: проблемы и что делать»** (сводка для руководителя) | https://docs.google.com/document/d/1twPlDCtLJiXSQR5vJMMm7HsyRngHVaTVMh2uLY0um5I/edit |
 | Интерактивный отчёт по сделкам, звонкам и переписке | https://claude.ai/artifact/M9zGLLew3xwm5L2z9UjRMJ |
 | Google Док «Анализ сделок K-truck» | https://docs.google.com/document/d/1L-JAC-rM7mmr2Rz3jpGwNyuNJr258pxZf7bPUMoFGPU/edit |
 | Google Док «Анализ переписки K-truck» (ChatApp) | https://docs.google.com/document/d/1A5wzMy2b668q_Ci4Lzvr3eztMK1s_Pp-SYHU4JshD6I/edit |
