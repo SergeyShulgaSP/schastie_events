@@ -44,6 +44,7 @@ amo_analytics/            — скрипты выгрузки и анализа 
   chatapp_export.py       — выгрузка переписки ChatApp
   chat_analysis.py        — анализ переписки ChatApp
   tg_download.py, tg_parse.py, tg_analysis.py — экспорт Telegram: скачивание, разбор, анализ
+  deep_analysis.py        — углублённый анализ: сезонность, скорость, источники, география, портрет и др.
   deals_history.py        — ручная таблица учёта сделок: склейка дублей, метрики
   knowledge_base.py       — база вопросов и разбор ответов → SQLite и xlsx
   report_data.py          — наборы данных для интерактивного отчёта
@@ -66,6 +67,7 @@ data/                     — сырые данные и SQLite (только л
 | Google Док «Анализ переписки K-truck» (ChatApp) | https://docs.google.com/document/d/1A5wzMy2b668q_Ci4Lzvr3eztMK1s_Pp-SYHU4JshD6I/edit |
 | Google Док «Анализ переписки Telegram K-truck» | https://docs.google.com/document/d/1hWvSRaErcrxejUEPTWotZf5_Prp5_8dU5j5VKc-62UQ/edit |
 | Google Таблица «База вопросов клиентов K-truck» | https://docs.google.com/spreadsheets/d/1u1R4L6TK8b8VnlOmQmUEn3pEnxkICbj-ZTGOenzQlPc/edit |
+| Google Док «Углублённый анализ K-truck: 10 направлений» | https://docs.google.com/document/d/1A3glnH9Da_DaQUjIlXL1_NmcpCIqadAdnBzFJ7ODCVg/edit |
 | Путеводитель для ИИ-консультанта | `reports/k-truck-ai-guide.md`, `reports/k-truck-ai-qa.jsonl` |
 
 ## Как пересобрать всё с нуля
