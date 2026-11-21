@@ -45,6 +45,7 @@ amo_analytics/            — скрипты выгрузки и анализа 
   chat_analysis.py        — анализ переписки ChatApp
   tg_download.py, tg_parse.py, tg_analysis.py — экспорт Telegram: скачивание, разбор, анализ
   deep_analysis.py        — углублённый анализ: сезонность, скорость, источники, география, портрет и др.
+  goals_tracker.py        — трекер целей на квартал → reports/k-truck-goals-q1-2027.xlsx
   deals_history.py        — ручная таблица учёта сделок: склейка дублей, метрики
   knowledge_base.py       — база вопросов и разбор ответов → SQLite и xlsx
   report_data.py          — наборы данных для интерактивного отчёта
@@ -54,6 +55,7 @@ reports/                  — готовые результаты без пер�
   k-truck-report.html     — отчёт одной страницей
   k-truck-knowledge-base.xlsx — база вопросов и разбор ответов
   k-truck-ai-guide.md     — путеводитель для ИИ-консультанта
+  k-truck-goals-q1-2027.xlsx — трекер целей (шаблон, загружен в Google Таблицу)
   k-truck-ai-qa.jsonl     — 50 диалогов для дообучения
 data/                     — сырые данные и SQLite (только локально, в .gitignore)
 ```
@@ -69,6 +71,7 @@ data/                     — сырые данные и SQLite (только л
 | Google Таблица «База вопросов клиентов K-truck» | https://docs.google.com/spreadsheets/d/1u1R4L6TK8b8VnlOmQmUEn3pEnxkICbj-ZTGOenzQlPc/edit |
 | Google Док «Углублённый анализ K-truck: 10 направлений» | https://docs.google.com/document/d/1A3glnH9Da_DaQUjIlXL1_NmcpCIqadAdnBzFJ7ODCVg/edit |
 | Google Док «Цели K-truck на I квартал 2027» | https://docs.google.com/document/d/1-gWyJ_O7FyZaAEM35f2gGXkcY6mSopXxkzAhJSWZJyQ/edit |
+| Google Таблица «Трекер целей K-truck — I квартал 2027» | https://docs.google.com/spreadsheets/d/1yaQg0kUqM_Bu-BrZx5jbPRyS5vY8YR0IQ2PgjSpYC9Y/edit |
 | Путеводитель для ИИ-консультанта | `reports/k-truck-ai-guide.md`, `reports/k-truck-ai-qa.jsonl` |
 
 ## Как пересобрать всё с нуля
