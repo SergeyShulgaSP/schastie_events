@@ -68,6 +68,7 @@ data/                     — сырые данные и SQLite (только л
 | Google Док «Анализ переписки Telegram K-truck» | https://docs.google.com/document/d/1hWvSRaErcrxejUEPTWotZf5_Prp5_8dU5j5VKc-62UQ/edit |
 | Google Таблица «База вопросов клиентов K-truck» | https://docs.google.com/spreadsheets/d/1u1R4L6TK8b8VnlOmQmUEn3pEnxkICbj-ZTGOenzQlPc/edit |
 | Google Док «Углублённый анализ K-truck: 10 направлений» | https://docs.google.com/document/d/1A3glnH9Da_DaQUjIlXL1_NmcpCIqadAdnBzFJ7ODCVg/edit |
+| Google Док «Цели K-truck на I квартал 2027» | https://docs.google.com/document/d/1-gWyJ_O7FyZaAEM35f2gGXkcY6mSopXxkzAhJSWZJyQ/edit |
 | Путеводитель для ИИ-консультанта | `reports/k-truck-ai-guide.md`, `reports/k-truck-ai-qa.jsonl` |
 
 ## Как пересобрать всё с нуля
