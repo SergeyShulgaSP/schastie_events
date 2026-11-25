@@ -42,12 +42,12 @@ def index(db):
 def main():
     db = sqlite3.connect(DB, timeout=120); db.execute("PRAGMA journal_mode=WAL")
     index(db)
-    todo = [r[0] for r in db.execute("SELECT file FROM tel_calls WHERE sampled=1 AND file NOT IN (SELECT file FROM tel_transcripts) ORDER BY ts")]
+    todo = [r[0] for r in db.execute("SELECT file FROM tel_calls WHERE sampled>=1 AND file NOT IN (SELECT file FROM tel_transcripts) ORDER BY sampled, ts")]
     upto = int(sys.argv[1]) if len(sys.argv) > 1 else 0  # расшифровать, пока всего готово не станет upto (партии по 50)
     if upto:
         done = db.execute("SELECT COUNT(*) FROM tel_transcripts").fetchone()[0]
         todo = todo[:max(0, upto - done)]
-    total = db.execute("SELECT COUNT(*) FROM tel_calls WHERE sampled=1").fetchone()[0]
+    total = db.execute("SELECT COUNT(*) FROM tel_calls WHERE sampled>=1").fetchone()[0]
     print(f"выборка {total}, осталось {len(todo)}", flush=True)
     if not todo: return
     from faster_whisper import WhisperModel
