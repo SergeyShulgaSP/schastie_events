@@ -49,6 +49,7 @@ amo_analytics/            — скрипты выгрузки и анализа 
   amo_setup.py            — настройка amoCRM: этапы, воронки, причины отказа, поля, разовые задачи (с --apply)
   survey_sheet.py         — таблица обзвона покупателей (сценарий, список сделок, сводка)
   telphin_transcribe.py   — расшифровка выборки звонков из годового архива Telphin (партиями)
+  checklist.py            — чек-лист задач по итогам анализа → reports/k-truck-checklist.xlsx
   goals_tracker.py        — трекер целей на квартал → reports/k-truck-goals-q1-2027.xlsx
   deals_history.py        — ручная таблица учёта сделок: склейка дублей, метрики
   knowledge_base.py       — база вопросов и разбор ответов → SQLite и xlsx
@@ -68,6 +69,7 @@ data/                     — сырые данные и SQLite (только л
 
 | Результат | Где |
 |---|---|
+| **Google Таблица «Чек-лист задач K-truck по итогам анализа»** (48 задач, статусы) | https://docs.google.com/spreadsheets/d/1Z6lw5vrCfSuEJw0a4cBuxt_Mdn49X0sYLi6YMtEt2XQ/edit |
 | **Google Док «Итоговый анализ K-truck: проблемы и что делать»** (сводка для руководителя) | https://docs.google.com/document/d/1twPlDCtLJiXSQR5vJMMm7HsyRngHVaTVMh2uLY0um5I/edit |
 | Google Док «Звонки K-truck за год: почему клиенты покупают» (395 звонков Telphin) | https://docs.google.com/document/d/1Qsh5aIHartDrY4BzzbSu4YfjEOgLfMnWm07XxhMAzMI/edit |
 | Google Док «Портрет идеального клиента (ICP) K-truck» | https://docs.google.com/document/d/1fePcF96BNTUkynVGmhve6QGNAmfI7FObNRlzmr641lQ/edit |
