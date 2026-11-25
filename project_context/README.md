@@ -46,6 +46,8 @@ amo_analytics/            — скрипты выгрузки и анализа 
   tg_download.py, tg_parse.py, tg_analysis.py — экспорт Telegram: скачивание, разбор, анализ
   deep_analysis.py        — углублённый анализ: сезонность, скорость, источники, география, портрет и др.
   amo_setup.py            — настройка amoCRM: этапы, воронки, причины отказа, поля, разовые задачи (с --apply)
+  survey_sheet.py         — таблица обзвона покупателей (сценарий, список сделок, сводка)
+  telphin_transcribe.py   — расшифровка выборки звонков из годового архива Telphin (партиями)
   goals_tracker.py        — трекер целей на квартал → reports/k-truck-goals-q1-2027.xlsx
   deals_history.py        — ручная таблица учёта сделок: склейка дублей, метрики
   knowledge_base.py       — база вопросов и разбор ответов → SQLite и xlsx
@@ -67,6 +69,7 @@ data/                     — сырые данные и SQLite (только л
 |---|---|
 | **Google Док «Итоговый анализ K-truck: проблемы и что делать»** (сводка для руководителя) | https://docs.google.com/document/d/1twPlDCtLJiXSQR5vJMMm7HsyRngHVaTVMh2uLY0um5I/edit |
 | Google Док «Портрет идеального клиента (ICP) K-truck» | https://docs.google.com/document/d/1fePcF96BNTUkynVGmhve6QGNAmfI7FObNRlzmr641lQ/edit |
+| Google Таблица «Обзвон покупателей K-truck» (сценарий и ответы) | https://docs.google.com/spreadsheets/d/1oDGhtvGpXzgVAFrBNnvh9W6Q9vkKOMshaZyyjZHD0OA/edit |
 | Интерактивный отчёт по сделкам, звонкам и переписке | https://claude.ai/artifact/M9zGLLew3xwm5L2z9UjRMJ |
 | Google Док «Анализ сделок K-truck» | https://docs.google.com/document/d/1L-JAC-rM7mmr2Rz3jpGwNyuNJr258pxZf7bPUMoFGPU/edit |
 | Google Док «Анализ переписки K-truck» (ChatApp) | https://docs.google.com/document/d/1A5wzMy2b668q_Ci4Lzvr3eztMK1s_Pp-SYHU4JshD6I/edit |
