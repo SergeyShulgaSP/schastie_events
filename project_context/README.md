@@ -73,6 +73,7 @@ data/                     — сырые данные и SQLite (только л
 | **Google Док «Итоговый анализ K-truck: проблемы и что делать»** (сводка для руководителя) | https://docs.google.com/document/d/1twPlDCtLJiXSQR5vJMMm7HsyRngHVaTVMh2uLY0um5I/edit |
 | Google Док «Звонки K-truck за год: почему клиенты покупают» (395 звонков Telphin) | https://docs.google.com/document/d/1Qsh5aIHartDrY4BzzbSu4YfjEOgLfMnWm07XxhMAzMI/edit |
 | Google Док «Портрет идеального клиента (ICP) K-truck» | https://docs.google.com/document/d/1fePcF96BNTUkynVGmhve6QGNAmfI7FObNRlzmr641lQ/edit |
+| Google Док «Клиенты K-truck: полный портрет» | https://docs.google.com/document/d/110aGtZeg1WWErGMVUJcdJdQHZMJK7ojm01OjNUlnUjQ/edit |
 | Google Таблица «Обзвон покупателей K-truck» (сценарий и ответы) | https://docs.google.com/spreadsheets/d/1oDGhtvGpXzgVAFrBNnvh9W6Q9vkKOMshaZyyjZHD0OA/edit |
 | Интерактивный отчёт по сделкам, звонкам и переписке | https://claude.ai/artifact/M9zGLLew3xwm5L2z9UjRMJ |
 | Google Док «Анализ сделок K-truck» | https://docs.google.com/document/d/1L-JAC-rM7mmr2Rz3jpGwNyuNJr258pxZf7bPUMoFGPU/edit |
